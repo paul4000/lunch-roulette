@@ -1,4 +1,4 @@
-package com.greglturnquist.payroll;
+package com.greglturnquist.payroll.controllers;
 
 
 import com.greglturnquist.payroll.auth.SecurityService;

@@ -24,10 +24,10 @@ public class Recipe {
 
     private String name;
 
-    @OneToMany(mappedBy = "recipes", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Ingredient> ingredients;
 
-    @OneToMany(mappedBy = "recipes", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Step> steps;
 
     private LocalDateTime lastDraw;
