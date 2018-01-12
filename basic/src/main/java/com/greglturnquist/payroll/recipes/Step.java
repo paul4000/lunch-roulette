@@ -68,4 +68,22 @@ public class Step {
     public void setRecipe(Recipe recipe) {
         this.recipe = recipe;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Step step = (Step) o;
+
+        if (!sequenceNumber.equals(step.sequenceNumber)) return false;
+        return description.equals(step.description);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = sequenceNumber.hashCode();
+        result = 31 * result + description.hashCode();
+        return result;
+    }
 }

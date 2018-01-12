@@ -67,4 +67,22 @@ public class Ingredient {
     public void setRecipe(Recipe recipe) {
         this.recipe = recipe;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Ingredient that = (Ingredient) o;
+
+        if (!name.equals(that.name)) return false;
+        return quantity.equals(that.quantity);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result = 31 * result + quantity.hashCode();
+        return result;
+    }
 }
