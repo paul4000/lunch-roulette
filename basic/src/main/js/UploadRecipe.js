@@ -66,15 +66,14 @@ class UploadRecipe extends React.Component{
                 <div className="row main">
                     <div className="panel-heading">
                         <div className="panel-title text-center">
-                            <h1 className="title">Lunch Roulette</h1>
-                            <hr />
+                            <h4 className="title">Upload your new recipee</h4>
                         </div>
                     </div>
                     <div className="main-login main-center">
                         <form className="form-horizontal" method="post" action="#">
 
                             <div className="form-group">
-                                <label htmlFor="name" className="cols-sm-2 control-label">Your Name</label>
+                                <label htmlFor="name" className="control-label">Your Name</label>
                                 <div className="cols-sm-10">
                                     <div className="input-group">
                                         <input type="text" className="form-control" name="name" ref="name"  placeholder="Recipe name..."/>
@@ -83,7 +82,7 @@ class UploadRecipe extends React.Component{
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="email" className="cols-sm-2 control-label">Your Email</label>
+                                <label htmlFor="email" className="control-label">Your Email</label>
                                 <div className="cols-sm-10">
                                     <div className="input-group">
                                         <textarea className="form-control" id="formControlTextarea1" name="ingredients" ref="ingredients" rows="3" placeholder="Give ingredients..."/>
@@ -92,7 +91,7 @@ class UploadRecipe extends React.Component{
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="username" className="cols-sm-2 control-label">Username</label>
+                                <label htmlFor="username" className="control-label">Username</label>
                                 <div className="cols-sm-10">
                                     <div className="input-group">
                                         <textarea className="form-control" id="formControlTextarea2" name="steps" ref="steps" rows="5" placeholder="Give steps..."/>
@@ -101,7 +100,7 @@ class UploadRecipe extends React.Component{
                             </div>
 
                             <div className="form-group ">
-                                <button type="button" className="btn btn-primary btn-lg btn-block submit-button" onClick={this.handleSubmit}>Upload recipe</button>
+                                <button type="button" className="btn btn-primary" onClick={this.handleSubmit}>Upload recipe</button>
                             </div>
                         </form>
                     </div>

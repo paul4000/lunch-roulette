@@ -24,6 +24,13 @@ h1.title {
     font-family: 'Passion One', cursive;
 }
 
+h4.title {
+    font-size: 40px;
+    font-weight: 200;
+    font-family: 'Oxygen', sans-serif;
+}
+
+
 hr{
     width: 10%;
     color: #fff;
@@ -41,6 +48,17 @@ input,
 input::-webkit-input-placeholder {
     font-size: 11px;
     padding-top: 3px;
+    font-family: 'Oxygen', sans-serif;
+}
+
+textarea {
+    font-size: 11px;
+    padding-top: 3px;
+    font-family: 'Oxygen', sans-serif;
+}
+
+button {
+    font-family: 'Oxygen', sans-serif;
 }
 
 .main-login{

@@ -5,6 +5,8 @@ import com.greglturnquist.payroll.repositories.RecipesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Paulina on 12.01.2018.
  */
@@ -18,5 +20,10 @@ public class RecipeService {
 
         return recipesRepository.save(recipe);
 
+    }
+
+    public Iterable<Recipe> getAllRecipes()
+    {
+        return recipesRepository.findAll();
     }
 }

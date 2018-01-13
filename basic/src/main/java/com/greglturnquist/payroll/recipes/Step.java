@@ -1,5 +1,7 @@
 package com.greglturnquist.payroll.recipes;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -26,6 +28,7 @@ public class Step {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "recipe_id")
+    @JsonBackReference
     private Recipe recipe;
 
     public Step() {

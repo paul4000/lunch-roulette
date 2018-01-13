@@ -5,6 +5,7 @@ const ReactDOM = require('react-dom');
 const client = require('./client');
 const RegisterPanel = require('./RegisterPanel').registerPanel;
 const UploadRecipe = require('./UploadRecipe').uploadRecipe;
+const Recipes = require('./Recipes').recipes;
 
 import {BrowserRouter, Switch, Route, Link} from 'react-router-dom';
 
@@ -18,6 +19,7 @@ const App = () => (
         <Home>
             <Switch>
                 <Route path='/upload' component={UploadRecipe}/>
+                <Route path='/showRecipes' component={Recipes}/>
             </Switch>
         </Home>
     </Switch>
@@ -43,10 +45,19 @@ class Header extends React.Component{
 
     render(){
         return (
-            <div className="form-group ">
-                <button type="button" className="btn btn-primary btn-lg btn-block logout-button" onClick={this.handleSubmit}>Log out</button>
-                <button type="button"><Link to="/upload">Add recipe</Link></button>
-            </div>
+            <nav className="navbar navbar-inverse">
+                <div className="container-fluid">
+                    <div className="navbar-header">
+                        <a className="navbar-brand" href="#">Lunch Roulette</a>
+                    </div>
+                    <div className="form-group">
+                        <button type="button" className="btn btn-primary" onClick={this.handleSubmit}>Log out</button>
+                        <button type="button" className="btn btn-primary"><Link to="/upload" style={{color: '#fff'}}>Add recipe</Link></button>
+                        <button type="button" className="btn btn-primary"><Link to="/showRecipes" style={{color: '#fff'}}>Show recipes</Link></button>
+                    </div>
+                </div>
+            </nav>
+
         )
     }
 }
@@ -74,7 +85,6 @@ class View2 extends React.Component{
 const Home = (props) => {
         return (
             <div>
-                <div>test home</div>
                 <Header/>
                 {props.children}
                 <Alert stack={{limit: 3}} />
