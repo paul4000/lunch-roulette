@@ -66,14 +66,16 @@ class UploadRecipe extends React.Component{
                 <div className="row main">
                     <div className="panel-heading">
                         <div className="panel-title text-center">
-                            <h4 className="title">Upload your new recipee</h4>
+                            <h4 className="title">Upload your new recipe</h4>
                         </div>
                     </div>
-                    <div className="main-login main-center">
+                </div>
+                <div className="row main">
+                    <div className="main-login main-upload">
                         <form className="form-horizontal" method="post" action="#">
 
                             <div className="form-group">
-                                <label htmlFor="name" className="control-label">Your Name</label>
+                                <label htmlFor="name" className="control-label">Recipe name</label>
                                 <div className="cols-sm-10">
                                     <div className="input-group">
                                         <input type="text" className="form-control" name="name" ref="name"  placeholder="Recipe name..."/>
@@ -82,7 +84,9 @@ class UploadRecipe extends React.Component{
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="email" className="control-label">Your Email</label>
+                                <label htmlFor="ingredients" className="control-label">Please provide ingredients list in the following form: <br/>
+                                ingredient name:quantity <br/>
+                                each ingredient in separate line!</label>
                                 <div className="cols-sm-10">
                                     <div className="input-group">
                                         <textarea className="form-control" id="formControlTextarea1" name="ingredients" ref="ingredients" rows="3" placeholder="Give ingredients..."/>
@@ -91,7 +95,9 @@ class UploadRecipe extends React.Component{
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="username" className="control-label">Username</label>
+                                <label htmlFor="steps" className="control-label">Please provide steps list in the following form: <br/>
+                                sequence number:description of step <br/>
+                                new step in new line !</label>
                                 <div className="cols-sm-10">
                                     <div className="input-group">
                                         <textarea className="form-control" id="formControlTextarea2" name="steps" ref="steps" rows="5" placeholder="Give steps..."/>

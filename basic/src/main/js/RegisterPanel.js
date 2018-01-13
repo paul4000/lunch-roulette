@@ -52,6 +52,8 @@ class RegisterPanel extends React.Component{
                             <hr />
                         </div>
                     </div>
+                </div>
+                <div className="row main">
                     <div className="main-login main-center">
                         <form className="form-horizontal" method="post" action="#">
 
