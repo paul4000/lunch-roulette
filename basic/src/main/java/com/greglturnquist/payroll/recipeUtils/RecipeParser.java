@@ -24,6 +24,8 @@ public class RecipeParser {
 
         Recipe resultRecipe = new Recipe();
 
+        resultRecipe.setName(recipeDTO.getName());
+
         Set<Ingredient> ingredients;
 
         String ingredientsExtracted = recipeDTO.getIngredients();

@@ -5,12 +5,14 @@ package com.greglturnquist.payroll.recipes;
  */
 public class RecipeDTO {
 
+    private String name;
     private String ingredients;
     private String steps;
 
     public RecipeDTO(){};
 
-    public RecipeDTO(String ingredients, String steps) {
+    public RecipeDTO(String name, String ingredients, String steps) {
+        this.name = name;
         this.ingredients = ingredients;
         this.steps = steps;
     }
@@ -29,5 +31,13 @@ public class RecipeDTO {
 
     public void setSteps(String steps) {
         this.steps = steps;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
