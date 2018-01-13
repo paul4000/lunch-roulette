@@ -32,6 +32,7 @@ h4.title {
 }
 
 
+
 hr{
     width: 10%;
     color: #fff;
@@ -95,4 +96,9 @@ button {
 .login-register{
     font-size: 11px;
     text-align: center;
+}
+
+.close, .close:hover, .close:focus, .close:active {
+    position: static;
+    opacity: 1;
 }

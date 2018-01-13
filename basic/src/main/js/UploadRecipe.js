@@ -13,6 +13,9 @@ class UploadRecipe extends React.Component{
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.state = {
+            showError: false
+        };
     }
 
     handleSubmit(e) {
@@ -48,7 +51,7 @@ class UploadRecipe extends React.Component{
 
         })
             .catch(error => {
-                alert('Wrong format')
+                this.setState({ showError: true });
             });
         // this.props.attributes.forEach(attribute => {
         //     ReactDOM.findDOMNode(this.refs[attribute]).value = ''; // clear out the dialog's inputs
@@ -70,8 +73,15 @@ class UploadRecipe extends React.Component{
                         </div>
                     </div>
                 </div>
+
                 <div className="row main">
                     <div className="main-login main-upload">
+                        { this.state.showError ?
+                        <div className="alert alert-dismissible alert-danger">
+                            <button type="button" className="close" onClick={() => this.setState({ showError: false }) }></button>
+                            <strong>Wrong recipe format!</strong>
+                        </div> : null }
+
                         <form className="form-horizontal" method="post" action="#">
 
                             <div className="form-group">
