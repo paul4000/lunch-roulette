@@ -4,7 +4,11 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const client = require('./client');
 const RegisterPanel = require('./RegisterPanel').registerPanel;
+const UploadRecipe = require('./UploadRecipe').uploadRecipe;
+
 import {BrowserRouter, Switch, Route, Link} from 'react-router-dom';
+
+import Alert from 'react-s-alert';
 
 const App = () => (
     <Switch>
@@ -13,8 +17,7 @@ const App = () => (
         </Route>
         <Home>
             <Switch>
-                <Route path='/view2' component={View2}/>
-                <Route path='/view1' component={View1}/>
+                <Route path='/upload' component={UploadRecipe}/>
             </Switch>
         </Home>
     </Switch>
@@ -42,8 +45,7 @@ class Header extends React.Component{
         return (
             <div className="form-group ">
                 <button type="button" className="btn btn-primary btn-lg btn-block logout-button" onClick={this.handleSubmit}>Log out</button>
-                <button type="button"><Link to="/view1">{'View1'}</Link></button>
-                <button type="button"><Link to="/view2">{'View2'}</Link></button>
+                <button type="button"><Link to="/upload">Add recipe</Link></button>
             </div>
         )
     }
@@ -75,6 +77,7 @@ const Home = (props) => {
                 <div>test home</div>
                 <Header/>
                 {props.children}
+                <Alert stack={{limit: 3}} />
             </div>
         );
 };

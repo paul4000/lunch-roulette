@@ -6,6 +6,8 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const client = require('./client');
 
+import Alert from 'react-s-alert';
+
 class UploadRecipe extends React.Component{
 
     constructor(props) {
@@ -19,7 +21,7 @@ class UploadRecipe extends React.Component{
         // this.props.attributes.forEach(attribute => {
         //     newEmployee[attribute] = ReactDOM.findDOMNode(this.refs[attribute]).value.trim();
         // });
-        newRecipe["recipeName"] = ReactDOM.findDOMNode(this.refs["recipeName"]).value.trim();
+        newRecipe["name"] = ReactDOM.findDOMNode(this.refs["name"]).value.trim();
         newRecipe["ingredients"] = ReactDOM.findDOMNode(this.refs["ingredients"]).value.trim();
         newRecipe["steps"] = ReactDOM.findDOMNode(this.refs["steps"]).value.trim();
 
@@ -28,17 +30,26 @@ class UploadRecipe extends React.Component{
             path: '/recipes',
             entity: newRecipe,
             headers: {'Content-Type': 'application/json'}
-        }).done(response => {
-            console.log(response);
+        }).then(response => {
+            // console.log(response);
             if (response.status.code === 200) {
-                ReactDOM.findDOMNode(this.refs["recipeName"]).value = '';
+                ReactDOM.findDOMNode(this.refs["name"]).value = '';
                 ReactDOM.findDOMNode(this.refs["ingredients"]).value = '';
                 ReactDOM.findDOMNode(this.refs["steps"]).value = '';
 
-            } else {
+                alert('You added new recipe');
+                // Alert.info('You added new recipe', {
+                //     position: 'top-center',
+                //     effect: 'bouncyflip',
+                //     timeout: 'none'
+                // });
 
             }
-        });
+
+        })
+            .catch(error => {
+                alert('Wrong format')
+            });
         // this.props.attributes.forEach(attribute => {
         //     ReactDOM.findDOMNode(this.refs[attribute]).value = ''; // clear out the dialog's inputs
         // });
@@ -66,7 +77,7 @@ class UploadRecipe extends React.Component{
                                 <label htmlFor="name" className="cols-sm-2 control-label">Your Name</label>
                                 <div className="cols-sm-10">
                                     <div className="input-group">
-                                        <input type="text" className="form-control" name="recipeName" ref="recipeName"  placeholder="Recipe name..."/>
+                                        <input type="text" className="form-control" name="name" ref="name"  placeholder="Recipe name..."/>
                                     </div>
                                 </div>
                             </div>
