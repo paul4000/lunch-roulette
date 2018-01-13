@@ -4,7 +4,7 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const client = require('./client');
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {BrowserRouter, Switch, Route, Link} from 'react-router-dom';
 
 // end::vars[]
 
@@ -12,7 +12,14 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 const App = () => (
     <Switch>
         <Route exact path='/' component={RegisterPanel}/>
-        <Route path='/home' component={Home}/>
+        <Route path='/home' component={Home}>
+        </Route>
+        <Home>
+            <Switch>
+                <Route path='/view2' component={() => <div>yo!</div>}/>
+                <Route path='/view1' component={() => <div>yababaa!</div>}/>
+            </Switch>
+        </Home>
     </Switch>
 );
 
@@ -40,21 +47,42 @@ class Header extends React.Component{
         return (
             <div className="form-group ">
                 <button type="button" className="btn btn-primary btn-lg btn-block logout-button" onClick={this.handleSubmit}>Log out</button>
+                <button type="button"><Link to="/view1">{'View1'}</Link></button>
+                <button type="button"><Link to="/view2">{'View2'}</Link></button>
             </div>
         )
     }
 }
 
-class Home extends React.Component{
+class View1 extends React.Component{
     render(){
         return (
             <div>
-                <Header/>
-                <div>test home</div>
+                <div>test view 1</div>
             </div>
         );
     }
 }
+class View2 extends React.Component{
+    render(){
+        return (
+            <div>
+                <div>test view 2</div>
+            </div>
+        );
+    }
+}
+
+
+const Home = (props) => {
+        return (
+            <div>
+                <div>test home</div>
+                <Header/>
+                {props.children}
+            </div>
+        );
+};
 
 class LoginPanel extends React.Component{
     render(){
@@ -95,14 +123,6 @@ class RegisterPanel extends React.Component{
         });
 
         console.log(newEmployee);
-
-        // this.props.onCreate(newEmployee);
-
-        // clear out the dialog's inputs
-        // this.props.attributes.forEach(attribute => {
-        //     ReactDOM.findDOMNode(this.refs[attribute]).value = '';
-        // });
-
         // Navigate away from the dialog to hide it.
         // window.location = "#";
     }
@@ -184,39 +204,39 @@ class RegisterPanel extends React.Component{
 }
 
 // tag::employee-list[]
-class EmployeeList extends React.Component{
-    render() {
-        var employees = this.props.employees.map(employee =>
-            <Employee key={employee._links.self.href} employee={employee}/>
-        );
-        return (
-            <table>
-                <tbody>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Description</th>
-                </tr>
-                {employees}
-                </tbody>
-            </table>
-        )
-    }
-}
+// class EmployeeList extends React.Component{
+//     render() {
+//         var employees = this.props.employees.map(employee =>
+//             <Employee key={employee._links.self.href} employee={employee}/>
+//         );
+//         return (
+//             <table>
+//                 <tbody>
+//                 <tr>
+//                     <th>First Name</th>
+//                     <th>Last Name</th>
+//                     <th>Description</th>
+//                 </tr>
+//                 {employees}
+//                 </tbody>
+//             </table>
+//         )
+//     }
+// }
 // end::employee-list[]
 
 // tag::employee[]
-class Employee extends React.Component{
-    render() {
-        return (
-            <tr>
-                <td>{this.props.employee.firstName}</td>
-                <td>{this.props.employee.lastName}</td>
-                <td>{this.props.employee.description}</td>
-            </tr>
-        )
-    }
-}
+// class Employee extends React.Component{
+//     render() {
+//         return (
+//             <tr>
+//                 <td>{this.props.employee.firstName}</td>
+//                 <td>{this.props.employee.lastName}</td>
+//                 <td>{this.props.employee.description}</td>
+//             </tr>
+//         )
+//     }
+// }
 // end::employee[]
 
 // tag::render[]
