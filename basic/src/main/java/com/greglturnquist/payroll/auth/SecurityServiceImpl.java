@@ -35,7 +35,7 @@ public class SecurityServiceImpl implements SecurityService {
     }
 
     @Override
-    public void autoLogin(String username, String password) {
+    public Authentication autoLogin(String username, String password) {
 
         logger.log(Level.INFO, "Auto login started...");
 
@@ -55,6 +55,8 @@ public class SecurityServiceImpl implements SecurityService {
             SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
             logger.log(Level.INFO, "Auto login successful");
         }
+
+        return authenticate;
     }
 
 

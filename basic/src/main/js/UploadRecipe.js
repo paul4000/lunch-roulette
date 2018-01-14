@@ -34,7 +34,7 @@ class UploadRecipe extends React.Component{
             entity: newRecipe,
             headers: {'Content-Type': 'application/json'}
         }).then(response => {
-            // console.log(response);
+             console.log(response);
             if (response.status.code === 200) {
                 ReactDOM.findDOMNode(this.refs["name"]).value = '';
                 ReactDOM.findDOMNode(this.refs["ingredients"]).value = '';
