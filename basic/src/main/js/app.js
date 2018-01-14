@@ -7,6 +7,7 @@ const RegisterPanel = require('./RegisterPanel').registerPanel;
 const LoginPanel = require('./LoginPanel').loginPanel;
 const UploadRecipe = require('./UploadRecipe').uploadRecipe;
 const Recipes = require('./Recipes').recipes;
+const Random = require('./Random').random;
 
 import {BrowserRouter, Switch, Route, Link} from 'react-router-dom';
 
@@ -22,6 +23,7 @@ const App = () => (
             <Switch>
                 <Route path='/upload' component={UploadRecipe}/>
                 <Route path='/showRecipes' component={Recipes}/>
+                <Route path='/random' component={Random}/>
             </Switch>
         </Home>
     </Switch>
@@ -56,6 +58,7 @@ class Header extends React.Component{
                         <button type="button" className="btn btn-primary" onClick={this.handleSubmit}>Log out</button>
                         <button type="button" className="btn btn-primary"><Link to="/upload" style={{color: '#fff'}}>Add recipe</Link></button>
                         <button type="button" className="btn btn-primary"><Link to="/showRecipes" style={{color: '#fff'}}>Show recipes</Link></button>
+                        <button type="button" className="btn btn-primary"><Link to="/random" style={{color: '#fff'}}>Random</Link></button>
                     </div>
                 </div>
             </nav>

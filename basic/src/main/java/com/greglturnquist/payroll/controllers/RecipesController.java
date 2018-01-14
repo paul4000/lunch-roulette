@@ -26,6 +26,15 @@ public class RecipesController {
     @Autowired
     private RecipeService recipeService;
 
+    @GetMapping(path = "/random")
+    public ResponseEntity<Recipe> randomRecipe()
+    {
+        Optional<Recipe> recipe = recipeService.randomRecipe();
+
+        return recipe.map(recipe1 -> new ResponseEntity<>(recipe1, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.BAD_REQUEST));
+    }
+
     @PostMapping
     public ResponseEntity<Recipe> addRecipe(@RequestBody RecipeDTO recipeDTO) {
 
@@ -50,5 +59,7 @@ public class RecipesController {
     {
         return recipeService.getAllRecipes();
     }
+
+
 
 }

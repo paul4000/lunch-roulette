@@ -97,3 +97,18 @@ textarea {
     position: static;
     opacity: 1;
 }
+
+.center-block {
+    float:none;
+    margin-top: 20px;
+}
+
+.center-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    margin-top: 10px;
+}
