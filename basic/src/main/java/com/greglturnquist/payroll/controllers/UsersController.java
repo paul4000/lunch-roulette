@@ -31,9 +31,11 @@ public class UsersController {
     public void register(@RequestBody User user) {
         logger.log(Level.INFO, "Adding new user");
 
+        String password = user.getPassword();
+
         User responseBody = userService.addNewUser(user);
 
-        securityService.autoLogin(user.getUsername(), user.getPassword());
+        securityService.autoLogin(user.getUsername(), password);
     }
 
     @PostMapping(path = "/login")

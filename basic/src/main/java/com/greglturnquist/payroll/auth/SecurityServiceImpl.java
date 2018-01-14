@@ -47,7 +47,7 @@ public class SecurityServiceImpl implements SecurityService {
         Authentication authenticate = null;
         try {
             authenticate = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
-        } catch (BadCredentialsException e) {
+        } catch (BadCredentialsException e){
             logger.log(Level.INFO, "Bad credentials");
         }
 

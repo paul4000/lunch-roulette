@@ -4,6 +4,7 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const client = require('./client');
 const RegisterPanel = require('./RegisterPanel').registerPanel;
+const LoginPanel = require('./LoginPanel').loginPanel;
 const UploadRecipe = require('./UploadRecipe').uploadRecipe;
 const Recipes = require('./Recipes').recipes;
 
@@ -14,6 +15,7 @@ import Alert from 'react-s-alert';
 const App = () => (
     <Switch>
         <Route exact path='/' component={RegisterPanel}/>
+        <Route path='/login' component={LoginPanel}/>
         <Route path='/home' component={Home}>
         </Route>
         <Home>
@@ -91,14 +93,6 @@ const Home = (props) => {
             </div>
         );
 };
-
-class LoginPanel extends React.Component{
-    render(){
-        return (
-            <div>test login</div>
-        )
-    }
-}
 
 // tag::employee-list[]
 // class EmployeeList extends React.Component{

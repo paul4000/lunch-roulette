@@ -4,6 +4,8 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const client = require('./client');
+import {Link} from "react-router-dom";
+
 
 class RegisterPanel extends React.Component{
 
@@ -109,6 +111,9 @@ class RegisterPanel extends React.Component{
 
                             <div className="form-group ">
                                 <button type="button" className="btn btn-primary btn-lg btn-block login-button" onClick={this.handleSubmit}>Register</button>
+                            </div>
+                            <div className="form-group ">
+                                <button type="button" className="btn btn-outline-secondary btn-lg btn-block login-button"><Link to="/login">Login</Link></button>
                             </div>
                         </form>
                     </div>
