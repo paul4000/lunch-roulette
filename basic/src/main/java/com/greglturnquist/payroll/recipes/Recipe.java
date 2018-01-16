@@ -1,18 +1,14 @@
 package com.greglturnquist.payroll.recipes;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
-import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -28,17 +24,20 @@ public class Recipe {
 
     private String name;
 
-    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonManagedReference
+    @ElementCollection(targetClass = Ingredient.class)
+    @JoinTable(name = "ingredients")
+    @JoinColumn(name = "recipe_tid", referencedColumnName = "id")
     private Set<Ingredient> ingredients;
 
-    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonManagedReference
+    @ElementCollection(targetClass = Step.class)
+    @JoinTable(name = "steps")
+    @JoinColumn(name = "recipe_tid", referencedColumnName = "id")
     private Set<Step> steps;
 
     private LocalDateTime lastDraw;
 
-    public Recipe() {}
+    public Recipe() {
+    }
 
     public Recipe(String name, Set<Ingredient> ingredients, Set<Step> steps, LocalDateTime lastDraw) {
         this.name = name;
@@ -85,25 +84,6 @@ public class Recipe {
 
     public void setLastDraw(LocalDateTime lastDraw) {
         this.lastDraw = lastDraw;
-    }
-
-    public void addIngredient(Ingredient ingredient){
-        if (ingredient != null) {
-            if (ingredients == null) ingredients = new HashSet<>();
-            ingredients.add(ingredient);
-            ingredient.setRecipe(this);
-        }
-    }
-
-    public void addStep(Step step){
-
-        if (step != null) {
-            if (steps == null) {
-                steps = new HashSet<>();
-            }
-            steps.add(step);
-            step.setRecipe(this);
-        }
     }
 
 }

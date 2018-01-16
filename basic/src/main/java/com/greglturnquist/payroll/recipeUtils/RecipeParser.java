@@ -35,7 +35,8 @@ public class RecipeParser {
         ingredients = Stream.of(splitIngredients)
                 .map(RecipeParser::parseIngredient).collect(Collectors.toSet());
 
-        ingredients.forEach(resultRecipe::addIngredient);
+        //ingredients.forEach(resultRecipe::addIngredient);
+        resultRecipe.setIngredients(ingredients);
 
         String stepsExtracted = recipeDTO.getSteps();
 
@@ -45,7 +46,8 @@ public class RecipeParser {
 
         Set<Step> stepSet = parseSteps(groupedSteps);
 
-        stepSet.forEach(resultRecipe::addStep);
+        //stepSet.forEach(resultRecipe::addStep);
+        resultRecipe.setSteps(stepSet);
 
         return resultRecipe;
     }

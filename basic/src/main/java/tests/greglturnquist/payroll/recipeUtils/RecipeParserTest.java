@@ -52,16 +52,16 @@ public class RecipeParserTest {
         //ingredients
         assertThat(recipe.getIngredients())
                 .hasSize(3)
-                .containsExactlyInAnyOrder(new Ingredient("marchew", 2, null),
-                        new Ingredient("brokuł", 1, null),
-                        new Ingredient("kurczak", 3, null));
+                .containsExactlyInAnyOrder(new Ingredient("marchew", 2),
+                        new Ingredient("brokuł", 1),
+                        new Ingredient("kurczak", 3));
 
         //steps
         assertThat(recipe.getSteps())
                 .hasSize(3)
-                .containsExactlyInAnyOrder(new Step(1L, "Krok pierwszy. ", null),
-                        new Step(2L, "Krok drugi. ", null),
-                        new Step(3L, "Krok trzeci. ", null));
+                .containsExactlyInAnyOrder(new Step(1L, "Krok pierwszy. "),
+                        new Step(2L, "Krok drugi. "),
+                        new Step(3L, "Krok trzeci. "));
     }
 
     @Test

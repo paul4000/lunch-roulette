@@ -1,50 +1,23 @@
 package com.greglturnquist.payroll.recipes;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.Embeddable;
 
 /**
  * Created by Paulina on 12.01.2018.
  */
-@Entity
-@Table(name = "ingredients")
+@Embeddable
 public class Ingredient {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
 
     private String name;
 
     private Integer quantity;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "recipe_id")
-    @JsonBackReference
-    private Recipe recipe;
-
     public Ingredient() {
     }
 
-    public Ingredient(String name, Integer quantity, Recipe recipe) {
+    public Ingredient(String name, Integer quantity) {
         this.name = name;
         this.quantity = quantity;
-        this.recipe = recipe;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -61,14 +34,6 @@ public class Ingredient {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
-    }
-
-    public Recipe getRecipe() {
-        return recipe;
-    }
-
-    public void setRecipe(Recipe recipe) {
-        this.recipe = recipe;
     }
 
     @Override
