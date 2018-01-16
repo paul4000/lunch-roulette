@@ -21,7 +21,7 @@ class Recipe extends React.Component {
             <div className="container w-75 ">
                 <div className="d-flex w-100 justify-content-between">
                     <h1>{this.props.recipe.name}</h1>
-                    <button type="button" className="btn btn-success">Send me ingredients list!</button>
+                    <button type="button" className="btn btn-success">Send me shopping list!</button>
 
                 </div>
                 <div className="list-group">

@@ -2,7 +2,6 @@ package com.greglturnquist.payroll.recipes;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.greglturnquist.payroll.auth.login.User;
-import org.hibernate.annotations.Fetch;
 
 import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
@@ -48,7 +47,6 @@ public class Recipe {
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE,
-
     })
     @JoinTable(name = "recipe_user",
             joinColumns = @JoinColumn(name = "recipe_id"),

@@ -1,6 +1,5 @@
 package com.greglturnquist.payroll.services;
 
-import com.google.common.collect.Iterables;
 import com.greglturnquist.payroll.auth.SecurityServiceImpl;
 import com.greglturnquist.payroll.recipeUtils.UsersRegister;
 import com.greglturnquist.payroll.recipes.Recipe;
@@ -8,8 +7,6 @@ import com.greglturnquist.payroll.repositories.RecipesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-import java.util.Random;
 import java.util.Set;
 
 /**
