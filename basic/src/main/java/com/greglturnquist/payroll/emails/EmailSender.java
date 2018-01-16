@@ -27,7 +27,7 @@ public class EmailSender {
         sendEmail(USER_NAME, emailParser);
     }
 
-    public void sendEmail(String recipient, EmailParser emailParser) throws MessagingException{
+    public static void sendEmail(String recipient, EmailParser emailParser) throws MessagingException{
 
         Properties properties = new Properties();
         properties.put("mail.smtp.starttls.enable", "true");
@@ -46,7 +46,6 @@ public class EmailSender {
                         return new PasswordAuthentication(USER_NAME, PASSWORD);
                     }
                 });
-//        Session session = Session.getDefaultInstance(properties);
         try {
 
             Message message = new MimeMessage(session);
@@ -61,8 +60,7 @@ public class EmailSender {
             logger.log(Level.INFO, "Email send to " + recipient);
 
         } catch (Exception e) {
-            e.printStackTrace();
-//            throw new MessagingException("Error while sending email");
+            throw new MessagingException("Error while sending email");
         }
 
     }

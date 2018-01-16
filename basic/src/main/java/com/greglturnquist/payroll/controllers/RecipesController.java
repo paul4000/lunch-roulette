@@ -2,7 +2,7 @@ package com.greglturnquist.payroll.controllers;
 
 import com.greglturnquist.payroll.recipeUtils.RecipeParser;
 import com.greglturnquist.payroll.recipes.Recipe;
-import com.greglturnquist.payroll.recipes.RecipeDTO;
+import com.greglturnquist.payroll.recipes.dto.RecipeDTO;
 import com.greglturnquist.payroll.services.RandomizeService;
 import com.greglturnquist.payroll.services.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +63,8 @@ public class RecipesController {
     {
         return recipeService.getAllRecipes();
     }
+
+
 
 
 

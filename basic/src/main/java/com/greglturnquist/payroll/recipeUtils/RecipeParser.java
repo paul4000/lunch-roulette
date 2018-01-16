@@ -2,7 +2,7 @@ package com.greglturnquist.payroll.recipeUtils;
 
 import com.greglturnquist.payroll.recipes.Ingredient;
 import com.greglturnquist.payroll.recipes.Recipe;
-import com.greglturnquist.payroll.recipes.RecipeDTO;
+import com.greglturnquist.payroll.recipes.dto.RecipeDTO;
 import com.greglturnquist.payroll.recipes.Step;
 
 import java.util.ArrayList;

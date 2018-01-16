@@ -1,4 +1,4 @@
-package com.greglturnquist.payroll.recipes;
+package com.greglturnquist.payroll.recipes.dto;
 
 /**
  * Created by Paulina on 12.01.2018.
@@ -9,7 +9,7 @@ public class RecipeDTO {
     private String ingredients;
     private String steps;
 
-    public RecipeDTO(){};
+    public RecipeDTO(){}
 
     public RecipeDTO(String name, String ingredients, String steps) {
         this.name = name;
