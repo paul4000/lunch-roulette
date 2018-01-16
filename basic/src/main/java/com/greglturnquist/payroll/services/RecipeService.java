@@ -1,8 +1,11 @@
 package com.greglturnquist.payroll.services;
 
 import com.google.common.collect.Iterables;
+import com.greglturnquist.payroll.auth.SecurityServiceImpl;
+import com.greglturnquist.payroll.auth.login.User;
 import com.greglturnquist.payroll.recipes.Recipe;
 import com.greglturnquist.payroll.repositories.RecipesRepository;
+import com.greglturnquist.payroll.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,10 +21,20 @@ public class RecipeService {
     @Autowired
     private RecipesRepository recipesRepository;
 
+    @Autowired
+    private UsersRepository usersRepository;
+
+    @Autowired
+    private SecurityServiceImpl securityService;
+
     public Recipe addRecipe(Recipe recipe) {
 
-        return recipesRepository.save(recipe);
+        String loggedInUsername = securityService.findLoggedInUsername();
+        User userByUsername = usersRepository.findByUsername(loggedInUsername);
 
+        recipe.addUser(userByUsername);
+
+        return recipesRepository.save(recipe);
     }
 
     public Iterable<Recipe> getAllRecipes() {

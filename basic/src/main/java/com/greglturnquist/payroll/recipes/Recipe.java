@@ -1,5 +1,9 @@
 package com.greglturnquist.payroll.recipes;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.greglturnquist.payroll.auth.login.User;
+
+import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,8 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -35,6 +41,17 @@ public class Recipe {
     private Set<Step> steps;
 
     private LocalDateTime lastDraw;
+
+    @JsonIgnore
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinTable(name = "recipe_user",
+            joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "post_id")
+    )
+    private Set<User> users;
 
     public Recipe() {
     }
@@ -85,5 +102,24 @@ public class Recipe {
     public void setLastDraw(LocalDateTime lastDraw) {
         this.lastDraw = lastDraw;
     }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void addUser(User user)
+    {
+        if(users == null){
+            users = new HashSet<>();
+        }
+        users.add(user);
+        user.getRecipes().add(this);
+    }
+    public void removeUser(User user)
+    {
+        users.remove(user);
+        user.getRecipes().remove(this);
+    }
+
 
 }

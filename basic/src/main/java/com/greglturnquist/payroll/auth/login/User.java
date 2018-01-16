@@ -1,11 +1,17 @@
 package com.greglturnquist.payroll.auth.login;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.greglturnquist.payroll.recipes.Recipe;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Paulina on 05.01.2018.
@@ -28,7 +34,12 @@ public class User {
     @Column(unique = true)
     private String email;
 
+    @JsonIgnore
+    @ManyToMany(mappedBy= "users")
+    private Set<Recipe> recipes;
+
     public User() {
+//        recipes = new HashSet<>();
     }
 
     public long getId() {
@@ -69,5 +80,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Set<Recipe> getRecipes() {
+        if(recipes == null) recipes = new HashSet<>();
+        return recipes;
+    }
+
+    public void setRecipes(Set<Recipe> recipes) {
+        this.recipes = recipes;
     }
 }
