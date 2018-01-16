@@ -3,6 +3,7 @@ package com.greglturnquist.payroll.controllers;
 import com.greglturnquist.payroll.recipeUtils.RecipeParser;
 import com.greglturnquist.payroll.recipes.Recipe;
 import com.greglturnquist.payroll.recipes.RecipeDTO;
+import com.greglturnquist.payroll.services.RandomizeService;
 import com.greglturnquist.payroll.services.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,10 +27,13 @@ public class RecipesController {
     @Autowired
     private RecipeService recipeService;
 
+    @Autowired
+    private RandomizeService randomizeService;
+
     @GetMapping(path = "/random")
     public ResponseEntity<Recipe> randomRecipe()
     {
-        Optional<Recipe> recipe = recipeService.randomRecipe();
+        Optional<Recipe> recipe = randomizeService.randomRecipe();
 
         return recipe.map(recipe1 -> new ResponseEntity<>(recipe1, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.BAD_REQUEST));

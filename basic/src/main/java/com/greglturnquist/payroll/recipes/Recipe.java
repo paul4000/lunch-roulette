@@ -2,10 +2,12 @@ package com.greglturnquist.payroll.recipes;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.greglturnquist.payroll.auth.login.User;
+import org.hibernate.annotations.Fetch;
 
 import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,12 +32,12 @@ public class Recipe {
 
     private String name;
 
-    @ElementCollection(targetClass = Ingredient.class)
+    @ElementCollection(targetClass = Ingredient.class, fetch = FetchType.EAGER)
     @JoinTable(name = "ingredients")
     @JoinColumn(name = "recipe_tid", referencedColumnName = "id")
     private Set<Ingredient> ingredients;
 
-    @ElementCollection(targetClass = Step.class)
+    @ElementCollection(targetClass = Step.class, fetch = FetchType.EAGER)
     @JoinTable(name = "steps")
     @JoinColumn(name = "recipe_tid", referencedColumnName = "id")
     private Set<Step> steps;
@@ -45,7 +47,8 @@ public class Recipe {
     @JsonIgnore
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
-            CascadeType.MERGE
+            CascadeType.MERGE,
+
     })
     @JoinTable(name = "recipe_user",
             joinColumns = @JoinColumn(name = "recipe_id"),
