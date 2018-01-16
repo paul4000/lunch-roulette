@@ -2,8 +2,13 @@ package tests.greglturnquist.payroll;
 
 import com.greglturnquist.payroll.emails.EmailParser;
 import com.greglturnquist.payroll.emails.EmailSender;
+import com.greglturnquist.payroll.emails.ShoppingListSender;
+import com.greglturnquist.payroll.recipes.Ingredient;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
+
+import java.util.Arrays;
+import java.util.Collections;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.mockito.Mockito.mock;
@@ -31,7 +36,7 @@ public class EmailSenderTest {
         emailSender = new EmailSender();
 
         //then
-        assertThatCode(() -> emailSender.sendSelfEmail(emailParser))
+        assertThatCode(() -> emailSender.sendEmail("pk.koziol49@gmail.com", new ShoppingListSender("Test lunch", Arrays.asList(new Ingredient("blybly", 3), new Ingredient("gagaga", 4)))))
                 .doesNotThrowAnyException();
     }
 

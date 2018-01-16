@@ -53,4 +53,9 @@ public class Ingredient {
         result = 31 * result + quantity.hashCode();
         return result;
     }
+
+    @Override
+    public String toString() {
+        return name + " " + String.valueOf(quantity);
+    }
 }

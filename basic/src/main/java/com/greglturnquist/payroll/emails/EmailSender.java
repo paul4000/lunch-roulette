@@ -54,7 +54,7 @@ public class EmailSender {
             message.addRecipient(Message.RecipientType.TO,
                     new InternetAddress(recipient));
             message.setSubject(emailParser.getEmailTitle());
-            message.setText(emailParser.getEmailBody());
+            message.setContent(emailParser.getEmailBody(), "text/html; charset=utf-8");
 
             Transport.send(message);
 
