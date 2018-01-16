@@ -39,5 +39,9 @@ public class UsersRegister {
         }
     }
 
+    public void addUser(User user){
+        userMap.put(user.getUsername(), user);
+    }
+
 
 }

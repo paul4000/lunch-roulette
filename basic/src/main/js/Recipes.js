@@ -4,21 +4,80 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const client = require('./client');
+const Recipe = require('./Recipe').recipe;
 
-// tag::employee[]
-// class Employee extends React.Component{
-//     render() {
-//         return (
-//             <tr>
-//                 <td>{this.props.employee.firstName}</td>
-//                 <td>{this.props.employee.lastName}</td>
-//                 <td>{this.props.employee.description}</td>
-//             </tr>
-//         )
-//     }
-// }
+class ShareInfo extends React.Component{
+
+    constructor(props){
+        super(props);
+    }
+
+    render(){
+        return (
+            <div>
+                { this.props.success ? <p className="text-success">Shared!</p> : <p className="text-danger">User not found!</p> }
+            </div>
+        )
+    }
+
+}
+
 
 class Recipes extends React.Component{
+
+    constructor(props) {
+        super(props);
+        this.handleShare = this.handleShare.bind(this);
+        this.state = {
+            recipes : [],
+            showedDetails: false,
+            currentViewedRecipe: {},
+            shared: false,
+            sharedSuccess: true
+        };
+
+    }
+
+    handleShare(e) {
+        var fusername = ReactDOM.findDOMNode(this.refs["username"]).value.trim();
+
+        var sharedRecipe = {
+            username: fusername,
+            recipe: this.state.currentViewedRecipe
+        }
+
+        client({
+            method: 'GET',
+            path: '/users/exists',
+            params: {username: fusername},
+            headers: {'Content-Type': 'application/json'}
+        }).then(response => {
+            console.log(response);
+
+            if(response.status.code === 200) {
+                client({
+                    method: 'PUT',
+                    path: '/recipes/share',
+                    entity: sharedRecipe,
+                    headers: {'Content-Type': 'application/json'}
+                }).done(response => {
+                   console.log(response);
+                    this.setState({
+                        shared: true,
+                        sharedSuccess: true
+                    });
+                });
+            }
+
+        }).catch(error => {
+            this.setState({
+                shared: true,
+                sharedSuccess: false
+            });
+        });
+
+
+    }
 
     componentDidMount() {
         client({
@@ -27,28 +86,56 @@ class Recipes extends React.Component{
             headers: {'Content-Type': 'application/json'}
         }).done(recipes => {
             console.log(recipes);
+
+            this.setState({
+                recipes : recipes.entity
+            });
+
+
         });
     }
 
      render() {
-//         var employees = this.props.employees.map(employee =>
-//             <Employee key={employee._links.self.href} employee={employee}/>
-//         );
+
+         var handleClick = (e, recipe) => {
+             // access to e.target here
+             console.log(recipe);
+
+             this.setState({
+                 showedDetails: true,
+                 currentViewedRecipe: recipe
+             });
+
+         };
+         var recipes = this.state.recipes.map(recipe =>
+             <a href="#" className="list-group-item list-group-item-action" onClick={(e) => handleClick(e, recipe)}>{recipe.name}</a>
+         );
          return (
-             <div>recipes test</div>
-//             <table>
-//                 <tbody>
-//                 <tr>
-//                     <th>First Name</th>
-//                     <th>Last Name</th>
-//                     <th>Description</th>
-//                 </tr>
-//                 {employees}
-//                 </tbody>
-//             </table>
+             <div className="row recipes-container">
+                 <div className="col-md-4">
+                     <div className="list-group">
+                         {recipes}
+                     </div>
+                 </div>
+                 <div className="col-md-8">
+                   {this.state.showedDetails ?
+                       <div>
+                       <Recipe recipe={this.state.currentViewedRecipe}/>
+                           <div className="container w-75 login-button">
+                               <div className="form-group">
+                                   <input type="text" className="form-control" placeholder="Type your friend username..." ref="username"/>
+                                   <button type="button" className="btn btn-outline-primary" onClick={this.handleShare}>Share</button>
+                                   {this.state.shared ? <ShareInfo success={this.state.sharedSuccess} /> : null }
+                               </div>
+                            </div>
+                       </div>
+                       : null}
+                 </div>
+             </div>
          )
      }
  }
+
 module.exports = {
     recipes: Recipes
 };

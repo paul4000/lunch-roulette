@@ -3,6 +3,7 @@ package com.greglturnquist.payroll.controllers;
 import com.greglturnquist.payroll.recipeUtils.RecipeParser;
 import com.greglturnquist.payroll.recipes.Recipe;
 import com.greglturnquist.payroll.recipes.dto.RecipeDTO;
+import com.greglturnquist.payroll.recipes.dto.SharedRecipeDTO;
 import com.greglturnquist.payroll.services.RandomizeService;
 import com.greglturnquist.payroll.services.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +13,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -23,6 +27,8 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path = "/recipes")
 public class RecipesController {
+
+    private final static Logger logger =Logger.getLogger(RecipesController.class.toString());
 
     @Autowired
     private RecipeService recipeService;
@@ -33,6 +39,7 @@ public class RecipesController {
     @GetMapping(path = "/random")
     public ResponseEntity<Recipe> randomRecipe()
     {
+        logger.log(Level.INFO, "Randomizing recipe...");
         Optional<Recipe> recipe = randomizeService.randomRecipe();
 
         return recipe.map(recipe1 -> new ResponseEntity<>(recipe1, HttpStatus.OK))
@@ -41,6 +48,8 @@ public class RecipesController {
 
     @PostMapping
     public ResponseEntity<Recipe> addRecipe(@RequestBody RecipeDTO recipeDTO) {
+
+        logger.log(Level.INFO, "Adding recipe");
 
         Recipe recipe = null;
 
@@ -65,7 +74,15 @@ public class RecipesController {
     }
 
 
+    @RequestMapping(path = "/share", method= RequestMethod.PUT)
+    public ResponseEntity<Recipe> shareRecipe(@RequestBody SharedRecipeDTO sharedRecipeDTO){
 
+        logger.log(Level.INFO, "Sharing recipe...");
+
+        Recipe sharedRecipe = recipeService.shareRecipe(sharedRecipeDTO.getUsername(), sharedRecipeDTO.getRecipe());
+
+        return new ResponseEntity<Recipe>(sharedRecipe, HttpStatus.OK);
+    }
 
 
 }

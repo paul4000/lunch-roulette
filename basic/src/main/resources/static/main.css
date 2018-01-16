@@ -112,3 +112,8 @@ textarea {
 .container{
     margin-top: 10px;
 }
+
+.recipes-container{
+    margin: 5px;
+    padding: 10px;
+}

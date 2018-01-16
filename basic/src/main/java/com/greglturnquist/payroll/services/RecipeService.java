@@ -1,6 +1,7 @@
 package com.greglturnquist.payroll.services;
 
 import com.greglturnquist.payroll.auth.SecurityServiceImpl;
+import com.greglturnquist.payroll.auth.login.User;
 import com.greglturnquist.payroll.recipeUtils.UsersRegister;
 import com.greglturnquist.payroll.recipes.Recipe;
 import com.greglturnquist.payroll.repositories.RecipesRepository;
@@ -39,6 +40,14 @@ public class RecipeService {
 
         return usersRegister.getUser(loggedInUsername).getRecipes();
 
+    }
+
+    public Recipe shareRecipe(String username, Recipe recipe){
+        //todo : fix sharing recipes
+        User user = usersRegister.getUser(username);
+        recipe.addUser(user);
+
+        return recipesRepository.save(recipe);
     }
 
 }
