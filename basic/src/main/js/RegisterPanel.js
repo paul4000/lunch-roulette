@@ -48,14 +48,12 @@ class RegisterPanel extends React.Component{
         return (
             <div className="container">
                 <div className="row main">
-                    <div className="panel-heading">
                         <div className="panel-title text-center">
                             <h1 className="title">Lunch Roulette</h1>
                             <hr />
                         </div>
-                    </div>
                 </div>
-                <div className="row main">
+                <div className="row">
                     <div className="main-login main-center">
                         <form className="form-horizontal" method="post" action="#">
 

@@ -14,14 +14,15 @@ body, html{
 }
 
 .main{
-    margin-top: 70px;
+    margin-top: 60px;
+    margin-bottom: 40px;
 }
 
 h1.title {
     font-size: 50px;
     font-weight: 400;
     font-family: 'Passion One', cursive;
-    text-align: center;
+
 }
 
 h4.title {
@@ -116,4 +117,8 @@ textarea {
 .recipes-container{
     margin: 5px;
     padding: 10px;
+}
+
+.panel-title {
+    width: 100%;
 }
