@@ -58,60 +58,60 @@ class RegisterPanel extends React.Component{
                         <form className="form-horizontal" method="post" action="#">
 
                             <div className="form-group">
-                                <label htmlFor="name" className="cols-sm-2 control-label">Your Name</label>
+                                <label htmlFor="name" className="cols-sm-2 control-label">Imię</label>
                                 <div className="cols-sm-10">
                                     <div className="input-group">
                                         <span className="input-group-addon"><i className="fa fa-user fa" aria-hidden="true"></i></span>
-                                        <input type="text" className="form-control" name="name" ref="name"  placeholder="Enter your Name"/>
+                                        <input type="text" className="form-control" name="name" ref="name"  placeholder="Wprowadź imię...."/>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="email" className="cols-sm-2 control-label">Your Email</label>
+                                <label htmlFor="email" className="cols-sm-2 control-label">Email</label>
                                 <div className="cols-sm-10">
                                     <div className="input-group">
                                         <span className="input-group-addon"><i className="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                        <input type="text" className="form-control" name="email" ref="email"  placeholder="Enter your Email"/>
+                                        <input type="text" className="form-control" name="email" ref="email"  placeholder="Wprowadź email..."/>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="username" className="cols-sm-2 control-label">Username</label>
+                                <label htmlFor="username" className="cols-sm-2 control-label">Nazwa użytkownika</label>
                                 <div className="cols-sm-10">
                                     <div className="input-group">
                                         <span className="input-group-addon"><i className="fa fa-users fa" aria-hidden="true"></i></span>
-                                        <input type="text" className="form-control" name="username" ref="username"  placeholder="Enter your Username"/>
+                                        <input type="text" className="form-control" name="username" ref="username"  placeholder="Wprowadź nazwę użytkownika..."/>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="password" className="cols-sm-2 control-label">Password</label>
+                                <label htmlFor="password" className="cols-sm-2 control-label">Hasło</label>
                                 <div className="cols-sm-10">
                                     <div className="input-group">
                                         <span className="input-group-addon"><i className="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                        <input type="password" className="form-control" name="password" ref="password"  placeholder="Enter your Password"/>
+                                        <input type="password" className="form-control" name="password" ref="password"  placeholder="Wprowadź hasło..."/>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="confirm" className="cols-sm-2 control-label">Confirm Password</label>
+                                <label htmlFor="confirm" className="cols-sm-2 control-label">Potwierdź hasło</label>
                                 <div className="cols-sm-10">
                                     <div className="input-group">
                                         <span className="input-group-addon"><i className="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                        <input type="password" className="form-control" name="confirm" ref="confirm"  placeholder="Confirm your Password"/>
+                                        <input type="password" className="form-control" name="confirm" ref="confirm"  placeholder="Potwierdź hasło..."/>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="form-group ">
-                                <button type="button" className="btn btn-primary btn-lg btn-block login-button" onClick={this.handleSubmit}>Register</button>
+                                <button type="button" className="btn btn-primary btn-lg btn-block login-button" onClick={this.handleSubmit}>Zarejestruj</button>
                             </div>
                             <div className="form-group ">
-                                <button type="button" className="btn btn-outline-secondary btn-lg btn-block login-button"><Link to="/login">Login</Link></button>
+                                <button type="button" className="btn btn-outline-secondary btn-lg btn-block login-button"><Link to="/login">Zaloguj</Link></button>
                             </div>
                         </form>
                     </div>

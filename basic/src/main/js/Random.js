@@ -47,11 +47,11 @@ class Random extends React.Component {
         <div>
             <div className="container">
                     <div className="row center-button-container">
-                        <button className="btn btn-primary btn-danger center-block" onClick={this.handleSubmit}>RANDOM YOUR LUNCH!</button>
+                        <button className="btn btn-primary btn-danger center-block" onClick={this.handleSubmit}>WYLOSUJ OBIAD!</button>
                     </div>
             </div>
 
-        { this.state.showSomething ? (this.state.gotRecipe ?  <Recipe recipe={this.state.recipe}/> : <div>You have no recipes :( </div>) : null}
+        { this.state.showSomething ? (this.state.gotRecipe ?  <Recipe recipe={this.state.recipe}/> : <div>Nie masz żadnych przepisów :( </div>) : null}
 
         </div>
         )

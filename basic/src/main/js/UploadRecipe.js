@@ -14,7 +14,8 @@ class UploadRecipe extends React.Component{
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {
-            showError: false
+            showError: false,
+            showSuccess: false
         };
     }
 
@@ -40,18 +41,12 @@ class UploadRecipe extends React.Component{
                 ReactDOM.findDOMNode(this.refs["ingredients"]).value = '';
                 ReactDOM.findDOMNode(this.refs["steps"]).value = '';
 
-                alert('You added new recipe');
-                // Alert.info('You added new recipe', {
-                //     position: 'top-center',
-                //     effect: 'bouncyflip',
-                //     timeout: 'none'
-                // });
-
+                this.setState({ showSuccess: true, showError: false });
             }
 
         })
             .catch(error => {
-                this.setState({ showError: true });
+                this.setState({ showError: true, showSuccess: false });
             });
         // this.props.attributes.forEach(attribute => {
         //     ReactDOM.findDOMNode(this.refs[attribute]).value = ''; // clear out the dialog's inputs
@@ -69,7 +64,7 @@ class UploadRecipe extends React.Component{
                 <div className="row main">
                     <div className="panel-heading">
                         <div className="panel-title text-center">
-                            <h4 className="title">Upload your new recipe</h4>
+                            <h4 className="title">Dodaj nowy przepis</h4>
                         </div>
                     </div>
                 </div>
@@ -79,44 +74,49 @@ class UploadRecipe extends React.Component{
                         { this.state.showError ?
                         <div className="alert alert-dismissible alert-danger">
                             <button type="button" className="close" onClick={() => this.setState({ showError: false }) }></button>
-                            <strong>Wrong recipe format!</strong>
+                            <strong>Niepoprawny format przepisu!</strong>
                         </div> : null }
+                        { this.state.showSuccess ?
+                            <div className="alert alert-dismissible alert-success">
+                                <button type="button" className="close" onClick={() => this.setState({ showSuccess: false }) }></button>
+                                <strong>Dodano nowy przepis!</strong>
+                            </div> : null }
 
                         <form className="form-horizontal" method="post" action="#">
 
                             <div className="form-group">
-                                <label htmlFor="name" className="control-label">Recipe name</label>
+                                <label htmlFor="name" className="control-label">Nazwa przepisu</label>
                                 <div className="cols-sm-10">
                                     <div className="input-group">
-                                        <input type="text" className="form-control" name="name" ref="name"  placeholder="Recipe name..."/>
+                                        <input type="text" className="form-control" name="name" ref="name"  placeholder="Nazwa przepisu..."/>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="ingredients" className="control-label">Please provide ingredients list in the following form: <br/>
-                                ingredient name:quantity <br/>
-                                each ingredient in separate line!</label>
+                                <label htmlFor="ingredients" className="control-label">Dodaj składniki w formie: <br/>
+                                składnik:ilość <br/>
+                                każdy składnik w osobnej linijce!</label>
                                 <div className="cols-sm-10">
                                     <div className="input-group">
-                                        <textarea className="form-control" id="formControlTextarea1" name="ingredients" ref="ingredients" rows="3" placeholder="Give ingredients..."/>
+                                        <textarea className="form-control" id="formControlTextarea1" name="ingredients" ref="ingredients" rows="3" placeholder="Dodaj składniki..."/>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="steps" className="control-label">Please provide steps list in the following form: <br/>
-                                sequence number:description of step <br/>
-                                new step in new line !</label>
+                                <label htmlFor="steps" className="control-label">Dodaj kroki przygotowania w formie: <br/>
+                                numer kroku:opis <br/>
+                                każdy krok w osobnej linijce !</label>
                                 <div className="cols-sm-10">
                                     <div className="input-group">
-                                        <textarea className="form-control" id="formControlTextarea2" name="steps" ref="steps" rows="5" placeholder="Give steps..."/>
+                                        <textarea className="form-control" id="formControlTextarea2" name="steps" ref="steps" rows="5" placeholder="Dodaj kroki..."/>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="form-group ">
-                                <button type="button" className="btn btn-primary" onClick={this.handleSubmit}>Upload recipe</button>
+                                <button type="button" className="btn btn-primary" onClick={this.handleSubmit}>Dodaj przepis</button>
                             </div>
                         </form>
                     </div>

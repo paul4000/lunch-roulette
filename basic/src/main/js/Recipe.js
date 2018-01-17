@@ -61,20 +61,20 @@ class Recipe extends React.Component {
             <div className="container w-75 ">
                 <div className="d-flex w-100 justify-content-between">
                     <h1>{this.props.recipe.name}</h1>
-                    <button type="button" className="btn btn-success" onClick={this.sendEmail}>Send me shopping list!</button>
+                    <button type="button" className="btn btn-success" onClick={this.sendEmail}>Wyślij listę zakupów!</button>
 
                 </div>
                 <div className="list-group">
                     <a className="list-group-item list-group-item-action flex-column align-items-start active text-white">
                         <div className="d-flex w-100 justify-content-between">
-                            <h5 className="mb-1">Ingredients</h5>
+                            <h5 className="mb-1">Składniki</h5>
 
                         </div>
                         <ul>{ingredients}</ul>
                     </a>
                     <a className="list-group-item list-group-item-action flex-column align-items-start">
                         <div className="d-flex w-100 justify-content-between">
-                            <h5 className="mb-1">Steps</h5>
+                            <h5 className="mb-1">Kroki</h5>
                         </div>
                         <ul className="steps-list">{steps}</ul>
                     </a>
@@ -82,12 +82,12 @@ class Recipe extends React.Component {
                 { this.state.showError ?
                     <div className="alert alert-dismissible alert-danger">
                         <button type="button" className="close" onClick={() => this.setState({ showError: false }) }></button>
-                        <strong>Couldn't send email!</strong>
+                        <strong>Nie można wysłać listy zakupów!</strong>
                     </div> : null }
                 { this.state.showSuccess ?
                     <div className="alert alert-dismissible alert-success">
                         <button type="button" className="close" onClick={() => this.setState({ showSuccess: false }) }></button>
-                        <strong>Shopping list successfully send!</strong>
+                        <strong>Wysłano listę zakupów!</strong>
                     </div> : null }
             </div>
         )

@@ -56,10 +56,10 @@ class Header extends React.Component{
                         <a className="navbar-brand" href="#">Lunch Roulette</a>
                     </div>
                     <div className="form-group">
-                        <button type="button" className="btn btn-primary" onClick={this.handleSubmit}>Log out</button>
-                        <button type="button" className="btn btn-primary"><Link to="/upload" style={{color: '#fff'}}>Add recipe</Link></button>
-                        <button type="button" className="btn btn-primary"><Link to="/showRecipes" style={{color: '#fff'}}>Show recipes</Link></button>
-                        <button type="button" className="btn btn-primary"><Link to="/random" style={{color: '#fff'}}>Random</Link></button>
+                        <button type="button" className="btn btn-primary" onClick={this.handleSubmit}>Wyloguj</button>
+                        <button type="button" className="btn btn-primary"><Link to="/upload" style={{color: '#fff'}}>Dodaj przepis</Link></button>
+                        <button type="button" className="btn btn-primary"><Link to="/showRecipes" style={{color: '#fff'}}>Moje przepisy</Link></button>
+                        <button type="button" className="btn btn-primary"><Link to="/random" style={{color: '#fff'}}>Wylosuj</Link></button>
                     </div>
                 </div>
             </nav>

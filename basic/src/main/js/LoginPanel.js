@@ -57,33 +57,33 @@ class LoginPanel extends React.Component{
                         <form className="form-horizontal" method="post" action="#">
 
                             <div className="form-group">
-                                <label htmlFor="username" className="cols-sm-2 control-label">Username</label>
+                                <label htmlFor="username" className="cols-sm-2 control-label">Nazwa użytkownika</label>
                                 <div className="cols-sm-10">
                                     <div className="input-group">
                                         <span className="input-group-addon"><i className="fa fa-users fa" aria-hidden="true"></i></span>
-                                        <input type="text" className="form-control" name="username" ref="username"  placeholder="Enter your Username"/>
+                                        <input type="text" className="form-control" name="username" ref="username"  placeholder="Wprowadź nazwę użytkownika..."/>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="password" className="cols-sm-2 control-label">Password</label>
+                                <label htmlFor="password" className="cols-sm-2 control-label">Hasło</label>
                                 <div className="cols-sm-10">
                                     <div className="input-group">
                                         <span className="input-group-addon"><i className="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                        <input type="password" className="form-control" name="password" ref="password"  placeholder="Enter your Password"/>
+                                        <input type="password" className="form-control" name="password" ref="password"  placeholder="Wprowadź haslo..."/>
                                     </div>
                                 </div>
                             </div>
 
                             { this.state.showError ?
-                                <p className="text-danger">Wrong username or password. </p> : null }
+                                <p className="text-danger">Niepoprawne hasło lub nazwa użytkownika. </p> : null }
 
                             <div className="form-group ">
-                                <button type="button" className="btn btn-primary btn-lg btn-block login-button" onClick={this.handleSubmit}>Login</button>
+                                <button type="button" className="btn btn-primary btn-lg btn-block login-button" onClick={this.handleSubmit}>Zaloguj</button>
                             </div>
                             <div className="form-group ">
-                                <button type="button" className="btn btn-outline-secondary btn-lg btn-block login-button"><Link to="/">Register</Link></button>
+                                <button type="button" className="btn btn-outline-secondary btn-lg btn-block login-button"><Link to="/">Zarejestruj</Link></button>
                             </div>
                         </form>
                     </div>

@@ -15,7 +15,7 @@ class ShareInfo extends React.Component{
     render(){
         return (
             <div>
-                { this.props.success ? <p className="text-success">Shared!</p> : <p className="text-danger">User not found!</p> }
+                { this.props.success ? <p className="text-success">Udostępniono!</p> : <p className="text-danger">Nie znaleziono użytkownika!</p> }
             </div>
         )
     }
@@ -129,11 +129,11 @@ class Recipes extends React.Component{
                            <div className="container w-75 login-button">
                                <div className="form-group row">
                                    <div className="col-md-4">
-                                       <input type="text" className="form-control" placeholder="Type your friend username..." ref="username"/>
+                                       <input type="text" className="form-control" placeholder="Nazwa użytkownika..." ref="username"/>
                                        {this.state.shared ? <ShareInfo success={this.state.sharedSuccess} /> : null }
                                    </div>
                                    <div className="col-md-8">
-                                       <button type="button" className="btn btn-primary" onClick={this.handleShare}>Share</button>
+                                       <button type="button" className="btn btn-primary" onClick={this.handleShare}>Udostępnij</button>
                                    </div>
                                </div>
                             </div>
