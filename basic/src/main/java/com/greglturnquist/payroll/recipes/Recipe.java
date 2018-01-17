@@ -45,8 +45,7 @@ public class Recipe {
 
     @JsonIgnore
     @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE,
+            CascadeType.MERGE,CascadeType.REFRESH
     })
     @JoinTable(name = "recipe_user",
             joinColumns = @JoinColumn(name = "recipe_id"),
@@ -57,11 +56,12 @@ public class Recipe {
     public Recipe() {
     }
 
-    public Recipe(String name, Set<Ingredient> ingredients, Set<Step> steps, LocalDateTime lastDraw) {
+    public Recipe(String name, Set<Ingredient> ingredients, Set<Step> steps, LocalDateTime lastDraw, Set<User> users) {
         this.name = name;
         this.ingredients = ingredients;
         this.steps = steps;
         this.lastDraw = lastDraw;
+        this.users = users;
     }
 
     public long getId() {
@@ -102,6 +102,10 @@ public class Recipe {
 
     public void setLastDraw(LocalDateTime lastDraw) {
         this.lastDraw = lastDraw;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 
     public Set<User> getUsers() {

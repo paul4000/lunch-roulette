@@ -3,7 +3,6 @@ package com.greglturnquist.payroll.controllers;
 import com.greglturnquist.payroll.recipeUtils.RecipeParser;
 import com.greglturnquist.payroll.recipes.Recipe;
 import com.greglturnquist.payroll.recipes.dto.RecipeDTO;
-import com.greglturnquist.payroll.recipes.dto.SharedRecipeDTO;
 import com.greglturnquist.payroll.services.RandomizeService;
 import com.greglturnquist.payroll.services.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
@@ -28,7 +27,7 @@ import java.util.logging.Logger;
 @RequestMapping(path = "/recipes")
 public class RecipesController {
 
-    private final static Logger logger =Logger.getLogger(RecipesController.class.toString());
+    private final static Logger logger = Logger.getLogger(RecipesController.class.toString());
 
     @Autowired
     private RecipeService recipeService;
@@ -37,8 +36,7 @@ public class RecipesController {
     private RandomizeService randomizeService;
 
     @GetMapping(path = "/random")
-    public ResponseEntity<Recipe> randomRecipe()
-    {
+    public ResponseEntity<Recipe> randomRecipe() {
         logger.log(Level.INFO, "Randomizing recipe...");
         Optional<Recipe> recipe = randomizeService.randomRecipe();
 
@@ -53,13 +51,13 @@ public class RecipesController {
 
         Recipe recipe = null;
 
-        try{
+        try {
             recipe = RecipeParser.parseToRecipeObj(recipeDTO);
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
 
-        if(Optional.ofNullable(recipe).isPresent()){
+        if (Optional.ofNullable(recipe).isPresent()) {
             Recipe aRecipe = recipeService.addRecipe(recipe);
             return new ResponseEntity<>(aRecipe, HttpStatus.OK);
         } else {
@@ -68,20 +66,19 @@ public class RecipesController {
     }
 
     @GetMapping
-    public Iterable<Recipe> getAllRecipes()
-    {
+    public Iterable<Recipe> getAllRecipes() {
         return recipeService.getAllRecipes();
     }
 
 
-    @RequestMapping(path = "/share", method= RequestMethod.PUT)
-    public ResponseEntity<Recipe> shareRecipe(@RequestBody SharedRecipeDTO sharedRecipeDTO){
+    @GetMapping(path = "/share")
+    public ResponseEntity<Void> shareRecipe(@RequestParam(value = "username") String username, @RequestParam(value = "recipeId") String recipeId) {
 
         logger.log(Level.INFO, "Sharing recipe...");
 
-        Recipe sharedRecipe = recipeService.shareRecipe(sharedRecipeDTO.getUsername(), sharedRecipeDTO.getRecipe());
+        recipeService.shareRecipe(username, recipeId);
 
-        return new ResponseEntity<Recipe>(sharedRecipe, HttpStatus.OK);
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
 

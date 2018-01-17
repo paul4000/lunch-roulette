@@ -41,10 +41,6 @@ class Recipes extends React.Component{
     handleShare(e) {
         var fusername = ReactDOM.findDOMNode(this.refs["username"]).value.trim();
 
-        var sharedRecipe = {
-            username: fusername,
-            recipe: this.state.currentViewedRecipe
-        }
 
         client({
             method: 'GET',
@@ -56,9 +52,9 @@ class Recipes extends React.Component{
 
             if(response.status.code === 200) {
                 client({
-                    method: 'PUT',
+                    method: 'GET',
                     path: '/recipes/share',
-                    entity: sharedRecipe,
+                    params: {username: fusername, recipeId: this.state.currentViewedRecipe.id},
                     headers: {'Content-Type': 'application/json'}
                 }).done(response => {
                    console.log(response);
@@ -108,7 +104,7 @@ class Recipes extends React.Component{
 
          };
          var recipes = this.state.recipes.map(recipe =>
-             <a href="#" className="list-group-item list-group-item-action" onClick={(e) => handleClick(e, recipe)}>{recipe.name}</a>
+             <a className="list-group-item list-group-item-action" onClick={(e) => handleClick(e, recipe)}>{recipe.name}</a>
          );
          return (
              <div className="row recipes-container">
@@ -122,9 +118,13 @@ class Recipes extends React.Component{
                        <div>
                        <Recipe recipe={this.state.currentViewedRecipe}/>
                            <div className="container w-75 login-button">
-                               <div className="form-group">
-                                   <input type="text" className="form-control" placeholder="Type your friend username..." ref="username"/>
-                                   <button type="button" className="btn btn-outline-primary" onClick={this.handleShare}>Share</button>
+                               <div className="form-group row">
+                                   <div className="col-md-4">
+                                       <input type="text" className="form-control" placeholder="Type your friend username..." ref="username"/>
+                                   </div>
+                                   <div className="col-md-8">
+                                       <button type="button" className="btn btn-primary" onClick={this.handleShare}>Share</button>
+                                   </div>
                                    {this.state.shared ? <ShareInfo success={this.state.sharedSuccess} /> : null }
                                </div>
                             </div>

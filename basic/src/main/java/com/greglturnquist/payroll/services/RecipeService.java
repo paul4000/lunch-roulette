@@ -42,12 +42,13 @@ public class RecipeService {
 
     }
 
-    public Recipe shareRecipe(String username, Recipe recipe){
-        //todo : fix sharing recipes
+    public void shareRecipe(String username, String recipeId){
         User user = usersRegister.getUser(username);
-        recipe.addUser(user);
 
-        return recipesRepository.save(recipe);
+        Recipe recipe = recipesRepository.findOne(Long.valueOf(recipeId));
+
+        recipe.addUser(user);
+        recipesRepository.save(recipe);
     }
 
 }
