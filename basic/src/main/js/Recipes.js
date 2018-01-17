@@ -58,6 +58,15 @@ class Recipes extends React.Component{
                     headers: {'Content-Type': 'application/json'}
                 }).done(response => {
                    console.log(response);
+                    client({
+                        method: 'GET',
+                        path: '/messages/sharingMessage',
+                        params: {username: fusername},
+                        headers: {'Content-Type': 'application/json'}
+                    }).done(response =>{
+                        console.log(response);
+                    });
+
                     this.setState({
                         shared: true,
                         sharedSuccess: true

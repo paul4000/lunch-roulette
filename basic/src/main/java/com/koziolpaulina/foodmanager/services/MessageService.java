@@ -3,6 +3,7 @@ package com.koziolpaulina.foodmanager.services;
 import com.koziolpaulina.foodmanager.auth.SecurityService;
 import com.koziolpaulina.foodmanager.auth.login.User;
 import com.koziolpaulina.foodmanager.emails.EmailSender;
+import com.koziolpaulina.foodmanager.emails.NotficationSender;
 import com.koziolpaulina.foodmanager.emails.ShoppingListSender;
 import com.koziolpaulina.foodmanager.recipeUtils.UsersRegister;
 import com.koziolpaulina.foodmanager.recipes.Ingredient;
@@ -30,6 +31,16 @@ public class MessageService {
 
         EmailSender.sendEmail(currentUser.getEmail(),
                 new ShoppingListSender(recipeName, ingredientList));
+
+    }
+
+    public void sendSharingNotification(String recipient) throws MessagingException{
+        String loggedInUsername = securityService.findLoggedInUsername();
+
+        User recipientUser = usersRegister.getUser(recipient);
+
+        EmailSender.sendEmail(recipientUser.getEmail(), new NotficationSender(loggedInUsername));
+
 
     }
 

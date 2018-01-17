@@ -124,3 +124,9 @@ textarea {
 .panel-title {
     width: 100%;
 }
+
+.steps-list {
+    list-style-type : none;
+    padding: 0;
+    margin: 0;
+}

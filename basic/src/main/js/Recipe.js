@@ -48,9 +48,14 @@ class Recipe extends React.Component {
             <li>{ingredient.name}     {ingredient.quantity}</li>
         );
 
-        var steps = this.props.recipe.steps.map((step) =>
-            <li>{step.sequenceNumber}. {step.description}</li>
-        );
+        const steps = [].concat(this.props.recipe.steps)
+            .sort((a,b)=> a.sequenceNumber > b.sequenceNumber)
+            .map((step) =>
+                <li>{step.sequenceNumber}. {step.description}</li>);
+
+        // var steps = this.props.recipe.steps.map((step) =>
+        //     <li>{step.sequenceNumber}. {step.description}</li>
+        // );
 
         return (
             <div className="container w-75 ">
@@ -71,7 +76,7 @@ class Recipe extends React.Component {
                         <div className="d-flex w-100 justify-content-between">
                             <h5 className="mb-1">Steps</h5>
                         </div>
-                        <ul>{steps}</ul>
+                        <ul className="steps-list">{steps}</ul>
                     </a>
                 </div>
                 { this.state.showError ?

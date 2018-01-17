@@ -17,7 +17,7 @@ public class ShoppingListSender implements EmailParser {
 
     @Override
     public String getEmailTitle() {
-        return lunchName + " - shopping list";
+        return lunchName + " - lista zakupów";
     }
 
     @Override
@@ -100,10 +100,10 @@ public class ShoppingListSender implements EmailParser {
                 "\t\t<img src=\"https://cdn.pixabay.com/photo/2016/06/29/16/19/potato-1487166_1280.png\" />\n" +
                 "\t\t</div>\n" +
                 "\t\t<div class=\"right-item\">\n" +
-                "\t\t<h3> Hi, you have to buy below ingredients: </h3>\n" +
+                "\t\t<h3> Witaj, musisz kupić poniższe składniki: </h3>\n" +
                 shoppingList.toString() +
                 "<div class=\"regards\"> \n" +
-                "\t\t<p>Best regards, </br> LunchRouletteTeam </p>\n" +
+                "\t\t<p>Smacznego, życzy </br> LunchRouletteTeam </p>\n" +
                 "\t\t</div>\n" +
                 "\t\t</div>\n" +
                 "\t</div>\n" +
