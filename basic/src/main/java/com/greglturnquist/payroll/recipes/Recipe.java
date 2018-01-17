@@ -18,9 +18,6 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Created by Paulina on 12.01.2018.
- */
 @Entity
 @Table(name = "recipes")
 public class Recipe {

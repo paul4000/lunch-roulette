@@ -1,8 +1,6 @@
 package com.greglturnquist.payroll.auth.login;
 
-/**
- * Created by Paulina on 06.01.2018.
- */
+
 public class Credentials {
 
     private String username;

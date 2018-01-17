@@ -9,9 +9,6 @@ import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by Paulina on 16.01.2018.
- */
 @Component
 public class UsersRegister {
 

@@ -13,9 +13,7 @@ import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-/**
- * Created by Paulina on 12.01.2018.
- */
+
 public class RecipeParser {
 
     private static String patternForStep = "^[0-9]*:[a-zA-Z0-9\\s]*$";

@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.mail.MessagingException;
 
-/**
- * Created by Paulina on 16.01.2018.
- */
+
 @RestController
 @RequestMapping(path = "/messages")
 public class MessageController {

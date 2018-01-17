@@ -19,9 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * Created by Paulina on 06.01.2018.
- */
 @RestController
 @RequestMapping(path = "/users")
 public class UsersController {

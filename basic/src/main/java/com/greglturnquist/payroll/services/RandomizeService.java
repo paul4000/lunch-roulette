@@ -10,9 +10,6 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 import java.util.Random;
 
-/**
- * Created by Paulina on 16.01.2018.
- */
 @Service
 public class RandomizeService {
 

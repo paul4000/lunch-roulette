@@ -18,10 +18,6 @@ package com.greglturnquist.payroll.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-/**
- * @author Greg Turnquist
- */
-// tag::code[]
 @Controller
 public class HomeController {
 
@@ -31,4 +27,3 @@ public class HomeController {
 	}
 
 }
-// end::code[]

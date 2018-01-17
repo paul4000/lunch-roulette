@@ -8,15 +8,11 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
 import java.util.Arrays;
-import java.util.Collections;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-/**
- * Created by Paulina on 16.01.2018.
- */
 public class EmailSenderTest {
 
     private EmailSender emailSender;

@@ -4,9 +4,7 @@ import com.greglturnquist.payroll.recipes.Ingredient;
 
 import java.util.List;
 
-/**
- * Created by Paulina on 16.01.2018.
- */
+
 public class ShoppingListDTO {
 
     private String recipeName;

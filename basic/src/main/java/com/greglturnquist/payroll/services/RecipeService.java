@@ -10,9 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
-/**
- * Created by Paulina on 12.01.2018.
- */
 @Service
 public class RecipeService {
 

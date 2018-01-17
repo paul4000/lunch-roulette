@@ -20,9 +20,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-/**
- * Created by Paulina on 12.01.2018.
- */
 @RestController
 @RequestMapping(path = "/recipes")
 public class RecipesController {

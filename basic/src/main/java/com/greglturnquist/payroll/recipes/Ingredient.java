@@ -2,9 +2,6 @@ package com.greglturnquist.payroll.recipes;
 
 import javax.persistence.Embeddable;
 
-/**
- * Created by Paulina on 12.01.2018.
- */
 @Embeddable
 public class Ingredient {
 

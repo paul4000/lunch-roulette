@@ -18,10 +18,7 @@ package com.greglturnquist.payroll;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-/**
- * @author Greg Turnquist
- */
-// tag::code[]
+
 @SpringBootApplication
 public class ReactAndSpringDataRestApplication {
 
@@ -29,4 +26,3 @@ public class ReactAndSpringDataRestApplication {
 		SpringApplication.run(ReactAndSpringDataRestApplication.class, args);
 	}
 }
-// end::code[]

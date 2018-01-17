@@ -11,9 +11,6 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- * Created by Paulina on 16.01.2018.
- */
 public class EmailSender {
 
     private static final String USER_NAME = "lunch.roulette.manager@gmail.com";

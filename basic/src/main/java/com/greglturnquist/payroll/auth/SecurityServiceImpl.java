@@ -12,9 +12,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
-/**
- * Created by Paulina on 06.01.2018.
- */
 @Service
 public class SecurityServiceImpl implements SecurityService {
 

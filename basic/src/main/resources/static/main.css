@@ -10,8 +10,11 @@ td, th {
 body, html{
     height: 100%;
     background-repeat: no-repeat;
-    background-color: #d3d3d3;
+    background-size: 100%;
+    /*background: url("http://d3pah2c10lnl36.cloudfront.net/images/menu_detail_lunch_02_.jpg");*/
+    background-color: #999999;
 }
+
 
 .main{
     margin-top: 60px;

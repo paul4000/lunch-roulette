@@ -12,9 +12,6 @@ import org.springframework.stereotype.Service;
 import javax.mail.MessagingException;
 import java.util.List;
 
-/**
- * Created by Paulina on 16.01.2018.
- */
 @Service
 public class MessageService {
 
