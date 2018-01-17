@@ -12,6 +12,10 @@ class RegisterPanel extends React.Component{
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.state = {
+            passwordDoNotMatch: false,
+            existingError: false
+        }
     }
 
     handleSubmit(e) {
@@ -25,19 +29,29 @@ class RegisterPanel extends React.Component{
         newEmployee["username"] = ReactDOM.findDOMNode(this.refs["username"]).value.trim();
         newEmployee["password"] = ReactDOM.findDOMNode(this.refs["password"]).value.trim();
 
-        client({
-            method: 'POST',
-            path: '/users/register',
-            entity: newEmployee,
-            headers: {'Content-Type': 'application/json'}
-        }).done(response => {
-            console.log(response);
-            if (response.status.code === 200) {
-                this.props.history.push('/home');
-            }
-        });
+        var confirmedPasswd = ReactDOM.findDOMNode(this.refs["confirm"]).value.trim();
 
-        console.log(newEmployee);
+        if(confirmedPasswd === newEmployee.password) {
+            client({
+                method: 'POST',
+                path: '/users/register',
+                entity: newEmployee,
+                headers: {'Content-Type': 'application/json'}
+            }).then(response => {
+                console.log(response);
+                if (response.status.code === 200) {
+                    this.props.history.push('/home');
+                }
+            }).catch(error => {
+                    this.setState({existingError: true, passwordDoNotMatch:false});
+                }
+            );
+
+            console.log(newEmployee);
+        } else {
+            this.setState({ passwordDoNotMatch: true });
+        }
+
         // Navigate away from the dialog to hide it.
         // window.location = "#";
     }
@@ -106,6 +120,10 @@ class RegisterPanel extends React.Component{
                                     </div>
                                 </div>
                             </div>
+                            { this.state.existingError ?
+                                <p className="text-danger">Taka nazwa użytkownika lub email istnieją. </p> : null }
+                            { this.state.passwordDoNotMatch ?
+                                <p className="text-danger">Niezgodne hasła. </p> : null }
 
                             <div className="form-group ">
                                 <button type="button" className="btn btn-primary btn-lg btn-block login-button" onClick={this.handleSubmit}>Zarejestruj</button>
