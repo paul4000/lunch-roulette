@@ -121,11 +121,11 @@ class Recipes extends React.Component{
                                <div className="form-group row">
                                    <div className="col-md-4">
                                        <input type="text" className="form-control" placeholder="Type your friend username..." ref="username"/>
+                                       {this.state.shared ? <ShareInfo success={this.state.sharedSuccess} /> : null }
                                    </div>
                                    <div className="col-md-8">
                                        <button type="button" className="btn btn-primary" onClick={this.handleShare}>Share</button>
                                    </div>
-                                   {this.state.shared ? <ShareInfo success={this.state.sharedSuccess} /> : null }
                                </div>
                             </div>
                        </div>

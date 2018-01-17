@@ -48,6 +48,9 @@ public class RecipeService {
         Recipe recipe = recipesRepository.findOne(Long.valueOf(recipeId));
 
         recipe.addUser(user);
+
+        usersRegister.refreshUser(user);
+
         recipesRepository.save(recipe);
     }
 

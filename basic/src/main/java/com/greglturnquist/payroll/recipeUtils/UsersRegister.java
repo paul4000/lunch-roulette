@@ -43,5 +43,8 @@ public class UsersRegister {
         userMap.put(user.getUsername(), user);
     }
 
-
+    public void refreshUser(User user) {
+        User newUser = usersRepository.findByUsername(user.getUsername());
+        userMap.put(user.getUsername(), newUser);
+    }
 }
