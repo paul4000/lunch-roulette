@@ -44,6 +44,7 @@ class Header extends React.Component{
             headers: {'Content-Type': 'application/json'}
         }).done(response => {
             console.log(response);
+            window.location.href = "/";
         });
     }
 
@@ -67,26 +68,6 @@ class Header extends React.Component{
     }
 }
 
-class View1 extends React.Component{
-    render(){
-        return (
-            <div>
-                <div>test view 1</div>
-            </div>
-        );
-    }
-}
-class View2 extends React.Component{
-    render(){
-        return (
-            <div>
-                <div>test view 2</div>
-            </div>
-        );
-    }
-}
-
-
 const Home = (props) => {
         return (
             <div>
@@ -97,47 +78,8 @@ const Home = (props) => {
         );
 };
 
-// tag::employee-list[]
-// class EmployeeList extends React.Component{
-//     render() {
-//         var employees = this.props.employees.map(employee =>
-//             <Employee key={employee._links.self.href} employee={employee}/>
-//         );
-//         return (
-//             <table>
-//                 <tbody>
-//                 <tr>
-//                     <th>First Name</th>
-//                     <th>Last Name</th>
-//                     <th>Description</th>
-//                 </tr>
-//                 {employees}
-//                 </tbody>
-//             </table>
-//         )
-//     }
-// }
-// end::employee-list[]
-
-// tag::employee[]
-// class Employee extends React.Component{
-//     render() {
-//         return (
-//             <tr>
-//                 <td>{this.props.employee.firstName}</td>
-//                 <td>{this.props.employee.lastName}</td>
-//                 <td>{this.props.employee.description}</td>
-//             </tr>
-//         )
-//     }
-// }
-// end::employee[]
-
-// tag::render[]
 ReactDOM.render((
     <BrowserRouter>
         <App />
     </BrowserRouter>
 ), document.getElementById('react'))
-// end::render[]
-
