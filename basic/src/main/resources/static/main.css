@@ -11,8 +11,8 @@ body, html{
     height: 100%;
     background-repeat: no-repeat;
     background-size: 100%;
-    /*background: url("http://d3pah2c10lnl36.cloudfront.net/images/menu_detail_lunch_02_.jpg");*/
-    background-color: #999999;
+    background-image: url("http://mykcpizza.com/wp-content/uploads/2015/01/Delicious-Pizza-Desktop1.jpg");
+    /*background-color: #999999;*/
 }
 
 
@@ -129,4 +129,11 @@ textarea {
     list-style-type : none;
     padding: 0;
     margin: 0;
+}
+
+.background-container{
+    height: 100%;
+    background-repeat: no-repeat;
+    /*background-size: 100%;*/
+    background-image: url('menu_detail_lunch_02_.jpg');
 }
