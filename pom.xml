@@ -13,7 +13,6 @@
 
 	<modules>
 		<module>basic</module>
-		<module>security</module>
 	</modules>
 
 </project>
