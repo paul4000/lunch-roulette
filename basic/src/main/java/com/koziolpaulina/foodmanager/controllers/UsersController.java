@@ -50,6 +50,7 @@ public class UsersController {
         else return new ResponseEntity<Void>(HttpStatus.OK);
 
 
+
     }
     @GetMapping(path="/exists")
     public ResponseEntity<Void> userExists(@RequestParam(value="username") String username){
