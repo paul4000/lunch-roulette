@@ -22,6 +22,7 @@ public class UserService {
     private UsersRegister usersRegister;
 
     public User addNewUser(User user) {
+        // test komentarz
 
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 
